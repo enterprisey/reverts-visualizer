@@ -13,16 +13,22 @@
       <h1>English Wikipedia reverts visualizer</h1>
       <h2>Revert information</h2>
       <span id="rpm">0.000</span> reverts per minute
-      <br>
+      <br />
       <span id="rpm-info">0 reverts over 0.000 seconds</span>
-      <br>
-      <button id="update">Update</button>
+      <br />
+      <button class="btn btn-default" id="update">Update</button>
+      <button class="btn btn-default" id="show-code">Show code</button>
+      <br /><br />
+      <pre id="code" style="display: none">
+|level  = {{WikiDefcon/levels|<span id="rpm-code">0</span>}}
+|sign   = ~~~~~
+|info   = RPM stats according to ~~~ (using [http://aperson241.github.io/reverts-visualizer/ reverts-visualizer])</pre>
       <h2>Live reverts stream</h2>
       <hr>
       <pre id="feed" class="mw-feed"></pre>
     </div>
     <footer class="mw-footer" role="contentinfo">
-        <div class="container"
+        <div class="container">
             <a href="https://en.wikipedia.org/wiki/User:APerson" title="APerson's user page on the English Wikipedia">APerson</a> (<a href="https://en.wikipedia.org/wiki/User_talk:APerson" title="APerson's talk page on the English Wikipedia">talk!</a>) • <a href="https://github.com/APerson241/reverts-visualizer" title="Source code on GitHub">Source code</a> • <a href="https://github.com/APerson241/reverts-visualizer/issues" title="Issues on GitHub">Issues</a> • Original code from <a href="https://github.com/Krinkle">@Krinkle</a>
         </div>
     </footer>

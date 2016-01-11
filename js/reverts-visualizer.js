@@ -50,10 +50,16 @@ $( document ).ready( function () {
         var duration_of_average = Math.min( ms_since_start, MAX_REVERT_AGE );
         var rpm = ( reverts.length / duration_of_average ) * 60 * 1000;
         $( "#rpm" ).html( rpm.toFixed( 3 ) );
+        $( "#rpm-code" ).html( rpm.toFixed( 0 ) );
         $( "#rpm-info" ).html( reverts.length + " reverts over " + ( duration_of_average / ( 1000 ) ) + " seconds" );
     }
-    
+
     $( "#update" ).click( refreshRpm );
+
+    $( "#show-code" ).click( function () {
+        $( "#code" ).animate( { opacity: "toggle" }, "fast" );
+        $( "#show-code" ).text( $( "#show-code" ).text() == "Show code" ? "Hide code" : "Show code" );
+    } );
 
     function printEvent(event) {
         var node;
