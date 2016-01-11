@@ -1,0 +1,41 @@
+<html><head>
+    <meta charset="utf-8">
+    <title>Reverts Visualizer</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/reverts-visualizer.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.16/socket.io.min.js"></script>
+    <script src="js/reverts-visualizer.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>English Wikipedia reverts visualizer</h1>
+      <h2>Revert information</h2>
+      <span id="rpm">5.564</span> reverts per minute
+      <br>
+      <span id="rpm-info">8 reverts over 86.262 seconds</span>
+      <br>
+      <button id="update">Update</button>
+      <h2>Live reverts stream</h2>
+      <hr>
+      <pre id="feed" class="mw-feed">{"comment":"Undid revision 699244438 by [[Special:Contributions/Editor2020|Editor2020]] ([[User talk:Editor2020|talk]]) self revert","wiki":"enwiki","server_name":"en.wikipedia.org","title":"Category:Christian Zionism","timestamp":1452486100,"server_script_path":"/w","namespace":14,"server_url":"https://en.wikipedia.org","length":{"new":204,"old":213},"user":"Editor2020","bot":false,"type":"edit","id":787258158,"minor":false,"revision":{"new":699244522,"old":699244438}}
+
+{"comment":"Reverting possible vandalism by [[Special:Contribs/117.195.155.134|117.195.155.134]] to version by Jschnur. [[WP:CBFP|Report False Positive?]] Thanks, [[WP:CBNG|ClueBot NG]]. (2498262) (Bot)","wiki":"enwiki","server_name":"en.wikipedia.org","title":"Compounds of carbon","timestamp":1452486093,"server_script_path":"/w","namespace":0,"server_url":"https://en.wikipedia.org","length":{"new":11879,"old":11945},"user":"ClueBot NG","bot":false,"type":"edit","id":787258150,"minor":true,"revision":{"new":699244515,"old":699244514}}
+
+{"comment":"Reverted 1 edit by [[Special:Contributions/117.195.155.134|117.195.155.134]] ([[User talk:117.195.155.134|talk]]) to last revision by Materialscientist. ([[WP:TW|TW]])","wiki":"enwiki","server_name":"en.wikipedia.org","title":"Compounds of carbon","timestamp":1452486087,"server_script_path":"/w","namespace":0,"server_url":"https://en.wikipedia.org","length":{"new":11879,"old":11899},"user":"Jschnur","bot":false,"type":"edit","id":787258137,"minor":true,"revision":{"new":699244504,"old":699244339}}
+
+{"comment":"BOT--Reverting link addition(s) by [[:en:Special:Contributions/144.214.236.58|144.214.236.58]] to revision 698802258 (https://www.facebook.com/CityU.CB/ [\\bfacebook\\.com])","wiki":"enwiki","server_name":"en.wikipedia.org","title":"College of Business, City University of Hong Kong","timestamp":1452486085,"server_script_path":"/w","namespace":0,"server_url":"https://en.wikipedia.org","length":{"new":14638,"old":15575},"user":"XLinkBot","bot":false,"type":"edit","id":787258133,"minor":false,"revision":{"new":699244501,"old":699244383}}
+
+{"comment":"Reverting possible vandalism by [[Special:Contribs/Alephjade|Alephjade]] to version by Killjoydetective. [[WP:CBFP|Report False Positive?]] Thanks, [[WP:CBNG|ClueBot NG]]. (2498261) (Bot)","wiki":"enwiki","server_name":"en.wikipedia.org","title":"The Mountain Goats","timestamp":1452486042,"server_script_path":"/w","namespace":0,"server_url":"https://en.wikipedia.org","length":{"new":20688,"old":20733},"user":"ClueBot NG","bot":false,"type":"edit","id":787258041,"minor":true,"revision":{"new":699244442,"old":699244430}}
+
+</pre>
+    </div>
+    <footer class="mw-footer" role="contentinfo">
+      <div class="container">
+	<p>Original code from <a href="https://github.com/Krinkle">@Krinkle</a>.</p>
+      </div>
+    </footer>
+  
+
+</body></html>
