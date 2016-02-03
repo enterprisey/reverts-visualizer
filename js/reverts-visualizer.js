@@ -96,7 +96,7 @@ $( document ).ready( function () {
             buffer.push(element);
             if (buffer.length > size) {
                 var popped = buffer.shift();
-                popped.parentNode.removeChild(popped);
+                $( popped ).parent().children( "span:last-child" ).remove();
             }
         }
     }
