@@ -10,7 +10,7 @@ $( document ).ready( function () {
     var feedNode = document.getElementById('feed');
     var errorNode = document.createElement('div');
     errorNode.className = 'alert alert-danger';
-    var updateBuffer = makeDisplayBuffer(5);
+    var updateBuffer = makeDisplayBuffer(10);
     printEvent({
         type: 'info',
         'message': 'Subscribed! Waiting for a revert...'
