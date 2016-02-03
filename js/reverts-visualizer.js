@@ -68,7 +68,7 @@ $( document ).ready( function () {
                 var node = $( "<span>" )
                     .append( JSON.stringify( event.data ) + " " )
                     .append( $( "<a>" )
-                        .href( "https://en.wikipedia.org/w/index.php?diff=" + event.data.revision.new )
+                        .attr( "href", "https://en.wikipedia.org/w/index.php?diff=" + event.data.revision.new )
                         .text( "(diff)" ) )
                     .append( "\n" );
                 $(feedNode).prepend( node );
