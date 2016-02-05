@@ -2,6 +2,7 @@
 $( document ).ready( function () {
     const REGEX = /[Rr]evert|rv\ |rvv\ |undid/ig;
     const MAX_REVERT_AGE = 60 * 60 * 1000; // one hour
+    const DIFF_PAGE = "https://en.wikipedia.org/w/index.php?diff=";
     var reverts = [];
     var startTime = new Date().getTime(); // will be reset
     // See http://socket.io/
@@ -10,7 +11,6 @@ $( document ).ready( function () {
     var feedNode = document.getElementById('feed');
     var errorNode = document.createElement('div');
     errorNode.className = 'alert alert-danger';
-    var updateBuffer = makeDisplayBuffer(10);
     printEvent({
         type: 'info',
         'message': 'Subscribed! Waiting for a revert...'
@@ -54,7 +54,10 @@ $( document ).ready( function () {
         $( "#rpm-info" ).html( reverts.length + " reverts over " + ( duration_of_average / ( 1000 ) ) + " seconds" );
     }
 
-    $( "#update" ).click( refreshRpm );
+    $( "#update" ).click( function () {
+        refreshRpm();
+        cropFeed();
+    } );
 
     $( "#show-code" ).click( function () {
         $( "#code" ).animate( { opacity: "toggle" }, "fast" );
@@ -62,17 +65,15 @@ $( document ).ready( function () {
     } );
 
     function printEvent(event) {
-        var node;
         if (event.type === 'rc') {
             if(REGEX.test(event.data.comment)) {
-                var node = $( "<span>" )
-                    .append( JSON.stringify( event.data ) + " " )
-                    .append( $( "<a>" )
-                        .attr( "href", "https://en.wikipedia.org/w/index.php?diff=" + event.data.revision.new )
-                        .text( "(diff)" ) )
-                    .append( "\n" );
-                $(feedNode).prepend( node );
-                updateBuffer(node);
+                pushToFeed( $( "<span>" )
+                            .append( JSON.stringify( event.data ) + " " )
+                            .append( $( "<a>" )
+                                     .attr( "href", DIFF_PAGE +
+                                            event.data.revision.new )
+                                     .text( "(diff)" ) )
+                            .append( "\n" ) );
 
                 reverts.push(new Date().getTime());
 
@@ -84,20 +85,23 @@ $( document ).ready( function () {
                 $(feedNode).before(errorNode);
             }
         } else if (event.type === 'info') {
-            node = $('<div>').addClass('alert alert-info').text(event.message).get(0);
-            $(feedNode).prepend(node);
-            updateBuffer(node);
+            pushToFeed( $('<div>')
+                        .addClass('alert alert-info')
+                        .text(event.message)
+                        .get(0) );
         }
     }
 
-    function makeDisplayBuffer(size) {
-        var buffer = [];
-        return function (element) {
-            buffer.push(element);
-            if (buffer.length > size) {
-                var popped = buffer.shift();
-                $( popped ).parent().children( "span:last-child" ).remove();
-            }
+    function pushToFeed( element ) {
+        $( feedNode ).prepend( element );
+        cropFeed();
+    }
+
+    function cropFeed() {
+        if( $( "#buffer-size" ).val() < 2 ) return;
+
+        if( $( feedNode ).children().length >= $( "#buffer-size" ).val() ) {
+            $( feedNode ).children().last().remove();
         }
     }
 } );

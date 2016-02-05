@@ -1,3 +1,7 @@
 #rpm {
     font-size: 500%;
 }
+
+#buffer-size {
+    width: 4em;
+}
